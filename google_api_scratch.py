@@ -8,10 +8,9 @@ from google.auth.transport.requests import Request
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
-{"installed":{"client_id":"812898708254-thlmlfhmo79apiolrd3dd9u7s2kqs0vk.apps.googleusercontent.com","project_id":"quickstart-1584953971300","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"o_VRSP88PIaPWxznFCa6JnY1","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '10VHHFZCBFQmSo3Ro32Yzt49Q90aDHTWcime4Fz3KnEk'
-SAMPLE_RANGE_NAME = 'march_detail!B2:B473'
+SAMPLE_SPREADSHEET_ID = ''
+SAMPLE_RANGE_NAME = ''
 
 class purchase:
     def __init__(self, value, date, category):
