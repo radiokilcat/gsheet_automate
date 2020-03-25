@@ -47,19 +47,31 @@ def main():
                                 range=SAMPLE_RANGE_NAME).execute()
     values = result.get('values', [])
 
+    stopWords = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресение"]
+    newValues = []
     if not values:
         print('No data found.')
     else:
-        print('Name, Major:')
         for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            # print('%s, %s' % (row[0], row[4]))
-            # if row.:
-            #     print('%s' % row)
-            for i in row:
-                if "пятница" in i:
-                    # cell_to_update =
-                    print('%s' % i)
+            newRow = []
+            for content in row:
+                if any(sw in content for sw in stopWords):
+                    for s in stopWords:
+                        if s in content:
+                            newRow.append(content.replace(", %s" % s, ""))
+                else:
+                    newRow.append(content)
+            newValues.append(newRow)
+        # print(newValues)
+
+    value_input_option = 'RAW'
+    value_range_body = result
+    value_range_body['values'] = newValues
+
+    # print(value_range_body)
+    request2 = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
+                                                      valueInputOption=value_input_option, body=value_range_body)
+    response = request2.execute()
 
 
 if __name__ == '__main__':
